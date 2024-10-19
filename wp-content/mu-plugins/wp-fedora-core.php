@@ -119,6 +119,9 @@ function wp_fedora_set_default_options() {
     update_option( 'wp_fedora_disable_script_manager', 0 ); // Script Manager enabled by default
     }
 
+    if ( get_option( 'wp_fedora_heartbeat_frequency' ) === false ) {
+        update_option( 'wp_fedora_heartbeat_frequency', 15 ); // Heartbeat API frequency default to 15 seconds
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
