@@ -425,6 +425,13 @@ function wp_fedora_toggle_field_callback( $args ) {
     echo "<input type='checkbox' id='{$option_name}' name='{$option_name}' value='1' {$checked} />";
 }
 
+// Callback function to render the Heartbeat API input field
+function wp_fedora_heartbeat_field_callback( $args ) {
+    $option_name = $args['label_for'];
+    $value = get_option( $option_name, 15 ); // Default value is 15 seconds
+    echo "<input type='number' id='{$option_name}' name='{$option_name}' value='{$value}' min='5' max='300' />";
+}
+
 // Load necessary feature and admin files based on user settings
 function wp_fedora_load_files() {
     // Enable RSS feeds if checked
