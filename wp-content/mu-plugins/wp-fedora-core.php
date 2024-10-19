@@ -627,4 +627,3 @@ if ( get_option( 'wp_fedora_disable_script_manager' ) ) {
         require_once WP_FEDORA_DIR . 'wp-fedora/performance/limit-autosave-intervals.php'; // Autosave Interval feature file
     }
 }
-add_action( 'muplugins_loaded', 'wp_fedora_load_files' );
