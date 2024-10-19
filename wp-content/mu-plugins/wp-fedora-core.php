@@ -125,6 +125,10 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_revision_limit' ) === false ) {
         update_option( 'wp_fedora_revision_limit', -1 ); // Default WordPress behavior (-1, unlimited)
     }
+    if ( get_option( 'wp_fedora_autosave_interval' ) === false ) {
+        update_option( 'wp_fedora_autosave_interval', 60 ); // Default autosave interval in seconds
+    }
+
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
