@@ -1,23 +1,32 @@
 <?php
 /*
 Plugin Name: WP Fedora Meta Manager
-Description: Adds a meta box for custom meta titles, descriptions, and OG tags. Outputs these meta tags in the <head> of the page.
+Description: Adds a meta box for custom meta titles, descriptions, and OG tags. Outputs these meta tags in the <head> of the page. Supports any CPT.
 Version: 1.9
 Author: WP Fedora
 */
 
-// Add meta box to pages/posts for custom meta title and meta description
-function wp_fedora_add_meta_box() {
-    add_meta_box(
-        'wp_fedora_meta_box', // ID
-        'Meta Information', // Title
-        'wp_fedora_render_meta_box', // Callback function
-        ['post', 'page'], // Post types
-        'normal', // Context
-        'high' // Priority
-    );
+// Prevent direct access to the file
+if ( !defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
 }
-add_action( 'add_meta_boxes', 'wp_fedora_add_meta_box' );
+
+
+// Add meta box to posts, pages, and CPTs for custom meta title and meta description
+function wp_fedora_add_meta_box_to_cpts() {
+    $post_types = get_post_types(['public' => true], 'names'); // Get all public post types
+    foreach ($post_types as $post_type) {
+        add_meta_box(
+            'wp_fedora_meta_box', // ID
+            'Meta Information', // Title
+            'wp_fedora_render_meta_box', // Callback function
+            $post_type, // Post types (pages, posts, CPTs)
+            'normal', // Context
+            'high' // Priority
+        );
+    }
+}
+add_action( 'add_meta_boxes', 'wp_fedora_add_meta_box_to_cpts' );
 
 // Render the meta box fields with WordPress styling
 function wp_fedora_render_meta_box( $post ) {
@@ -54,7 +63,7 @@ function wp_fedora_render_meta_box( $post ) {
 
 // Save meta box data when the post is saved
 function wp_fedora_save_meta_box_data( $post_id ) {
-    // Check if current user has permission to save meta
+    // Check if the user has permission to save the data
     if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) return;
     if ( !current_user_can( 'edit_post', $post_id ) ) return;
 
