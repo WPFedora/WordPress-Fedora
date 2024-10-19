@@ -77,6 +77,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_enable_admin_bar_resources' ) === false ) {
         update_option( 'wp_fedora_enable_admin_bar_resources', 0 ); // Admin Bar Resources disabled by default
     }
+    if ( get_option( 'wp_fedora_disable_admin_bar_transition' ) === false ) {
+        update_option( 'wp_fedora_disable_admin_bar_transition', 0 ); // Admin Bar Hover Transition disabled by default
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
