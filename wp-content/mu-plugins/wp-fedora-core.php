@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: WP Fedora Core
-Version: 1.12
 Description: Core functionalities for WP Fedora, including bulk meta editing, disabling WP generator tag, disabling REST API, Meta Robots Settings, Darkmode UI, Admin Footer Customizer, Admin Bar Resources Disabler, Admin Bar Hover Transition, SVG Upload Support, Heartbeat Optimizer, Revisions Limit, Autosave Interval, Disable Emojis, Dashicons, OEmbed, and other SEO tools.
+Version: 1.1.17
 Author: WP Fedora
 */
 
