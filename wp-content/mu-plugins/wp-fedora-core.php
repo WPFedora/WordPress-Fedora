@@ -243,6 +243,178 @@ function wp_fedora_register_settings() {
         'wp_fedora_settings_section',
         ['label_for' => 'wp_fedora_enable_darkmode_ui']
     );
+    
+    add_settings_field(
+        'wp_fedora_disable_light_mode',
+        'Disable Light Mode (Switch to Classic)',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_disable_light_mode']
+    );
+
+
+    add_settings_field(
+        'wp_fedora_enable_dashboard_widgets',
+        'Enable Dashboard Widgets',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_enable_dashboard_widgets']
+    );
+
+    add_settings_field(
+        'wp_fedora_disable_admin_footer_customizer',
+        'Disable Admin Footer Customizer',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_disable_admin_footer_customizer']
+    );
+
+    add_settings_field(
+        'wp_fedora_enable_admin_bar_resources',
+        'Enable Admin Bar Resources',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_enable_admin_bar_resources']
+    );
+
+    add_settings_field(
+        'wp_fedora_disable_admin_bar_transition',
+        'Disable Admin Bar Hover Transition',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_disable_admin_bar_transition']
+    );
+
+    add_settings_field(
+        'wp_fedora_disable_svg_upload',
+        'Disable SVG Upload Support',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_disable_svg_upload']
+    );
+
+    add_settings_field(
+        'wp_fedora_disable_dashicons',               
+        'Enable Dashicons on Frontend',              
+        'wp_fedora_toggle_field_callback',          
+        'general',                                  
+        'wp_fedora_settings_section',               
+        ['label_for' => 'wp_fedora_disable_dashicons'] 
+    );
+
+    add_settings_field(
+        'wp_fedora_enable_comments',
+        'Enable WordPress Comments',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_enable_comments']
+    );
+    
+    add_settings_field(
+        'wp_fedora_move_plugin_editor_default',
+        'Move Plugin File Editor to WordPress Default Position',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_move_plugin_editor_default']
+    );
+    
+    add_settings_field(
+        'wp_fedora_move_theme_editor_default',
+        'Move Theme File Editor to WordPress Default Position',
+        'wp_fedora_toggle_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_move_theme_editor_default']
+    );
+    
+    add_settings_field(
+        'wp_fedora_disable_cpt',          
+        'Disable Custom Post Types', 
+        'wp_fedora_toggle_field_callback', 
+        'general',                        
+        'wp_fedora_settings_section',     
+        ['label_for' => 'wp_fedora_disable_cpt'] 
+    );
+    
+add_settings_field(
+    'wp_fedora_disable_robots_editor',
+    'Disable Robots.txt Editor',
+    'wp_fedora_toggle_field_callback',
+    'general',
+    'wp_fedora_settings_section',
+    ['label_for' => 'wp_fedora_disable_robots_editor']
+);
+
+add_settings_field(
+    'disable_404_monitor_log_', 
+    'Disable 404 Monitor',      
+    'wp_fedora_toggle_field_callback', 
+    'general',                  
+    'wp_fedora_settings_section', 
+    ['label_for' => 'disable_404_monitor_log_'] 
+);
+add_settings_field(
+    'wp_fedora_disable_sitemap_generator',          
+    'Disable Sitemap Generator',                   
+    'wp_fedora_toggle_field_callback',              
+    'general',                                      
+    'wp_fedora_settings_section',                   
+    ['label_for' => 'wp_fedora_disable_sitemap_generator'] 
+);
+
+add_settings_field(
+    'wp_fedora_disable_htaccess_editor',
+    'Disable .htaccess Editor',
+    'wp_fedora_toggle_field_callback',
+    'general',
+    'wp_fedora_settings_section',
+    ['label_for' => 'wp_fedora_disable_htaccess_editor']
+);
+
+add_settings_field(
+    'wp_fedora_disable_script_manager',           
+    'Disable Script Manager',                  
+    'wp_fedora_toggle_field_callback',            
+    'general',                                    
+    'wp_fedora_settings_section',                 
+    ['label_for' => 'wp_fedora_disable_script_manager'] 
+);
+
+    add_settings_field(
+        'wp_fedora_heartbeat_frequency',
+        'Heartbeat API Frequency (seconds)',
+        'wp_fedora_heartbeat_field_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_heartbeat_frequency']
+    );
+
+    add_settings_field(
+        'wp_fedora_revision_limit',
+        'Revision Limit',
+        'wp_fedora_revision_limit_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_revision_limit']
+    );
+
+    add_settings_field(
+        'wp_fedora_autosave_interval',
+        'Autosave Interval',
+        'wp_fedora_autosave_interval_callback',
+        'general',
+        'wp_fedora_settings_section',
+        ['label_for' => 'wp_fedora_autosave_interval']
+    );
+
 }
 add_action( 'admin_init', 'wp_fedora_register_settings' );
 
