@@ -106,6 +106,11 @@ function wp_fedora_set_default_options() {
         update_option('disable_404_monitor_log_', 0);  // 404 Monitor enabled by default
     }
     
+    // Ensure the sitemap generator is enabled by default
+    if ( get_option( 'wp_fedora_disable_sitemap_generator' ) === false ) {
+        update_option( 'wp_fedora_disable_sitemap_generator', 0 ); // Sitemap enabled by default
+    }
+    
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
