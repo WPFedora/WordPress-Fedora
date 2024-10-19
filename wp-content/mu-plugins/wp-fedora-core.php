@@ -134,7 +134,6 @@ add_action( 'init', 'wp_fedora_set_default_options' );
 
 // Add settings section and fields to General Settings
 function wp_fedora_register_settings() {
-    // Register settings for Fedora
     register_setting( 'general', 'wp_fedora_enable_rss', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
     register_setting( 'general', 'wp_fedora_enable_gutenberg', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
     register_setting( 'general', 'wp_fedora_disable_meta_editor', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
