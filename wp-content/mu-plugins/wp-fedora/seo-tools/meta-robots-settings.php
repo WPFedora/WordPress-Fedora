@@ -1,26 +1,29 @@
 <?php
 /*
 Plugin Name: WP Fedora Meta Robots Settings
-Description: Adds a meta box for robots "No Index" and "No Follow" settings in posts and pages, disables WordPress default robots tag, and adds a custom robots tag.
-Version: 1.2
+Description: Adds a meta box for robots "No Index" and "No Follow" settings in posts, pages, and CPTs. Disables WordPress default robots tag, and adds a custom robots tag.
+Version: 1.3
 Author: WP Fedora
 */
 
 // Disable WordPress default robots meta tag
 remove_action('wp_head', 'wp_robots', 1);
 
-// Add the Meta Robots Settings meta box to posts/pages
-function wp_fedora_add_robots_meta_box() {
-    add_meta_box(
-        'wp_fedora_meta_robots', // ID
-        'Meta Robots Settings',  // Title
-        'wp_fedora_render_robots_meta_box', // Callback function
-        ['post', 'page'],  // Post types
-        'normal',  // Context
-        'high'  // Priority
-    );
+// Add the Meta Robots Settings meta box to all public CPTs
+function wp_fedora_add_robots_meta_box_to_cpts() {
+    $post_types = get_post_types(['public' => true], 'names'); // Get all public post types
+    foreach ($post_types as $post_type) {
+        add_meta_box(
+            'wp_fedora_meta_robots', // ID
+            'Meta Robots Settings',  // Title
+            'wp_fedora_render_robots_meta_box', // Callback function
+            $post_type,  // Post types (including CPTs)
+            'normal',  // Context
+            'high'  // Priority
+        );
+    }
 }
-add_action( 'add_meta_boxes', 'wp_fedora_add_robots_meta_box' );
+add_action('add_meta_boxes', 'wp_fedora_add_robots_meta_box_to_cpts');
 
 // Render the Meta Robots Settings meta box fields
 function wp_fedora_render_robots_meta_box( $post ) {
