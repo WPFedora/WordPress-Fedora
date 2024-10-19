@@ -438,6 +438,14 @@ function wp_fedora_revision_limit_callback( $args ) {
     $value = get_option( $option_name, -1 ); // Default value is -1 (unlimited)
     echo "<input type='number' id='{$option_name}' name='{$option_name}' value='{$value}' min='-1' />"; // Allow -1 as minimum value
 }
+
+// Callback function to render the autosave interval input field
+function wp_fedora_autosave_interval_callback( $args ) {
+    $option_name = $args['label_for'];
+    $value = get_option( $option_name, 60 ); // Default value is 60 seconds
+    echo "<input type='number' id='{$option_name}' name='{$option_name}' value='{$value}' min='10' max='300' />";
+}
+
 // Load necessary feature and admin files based on user settings
 function wp_fedora_load_files() {
     // Enable RSS feeds if checked
