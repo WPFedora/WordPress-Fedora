@@ -1,16 +1,15 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       Vue WordPress
- * Plugin URI:        http://vuewp.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
- * Version:           1.0.0
- * Author:            Vue WordPress
- * Author URI:        vuewp.com
+ * Plugin Name:       WP Fedora
+ * Plugin URI:        http://wpfedora.com
+ * Description:       Core functionalities for WP Fedora, including bulk meta editing, disabling WP generator tag, disabling REST API, Meta Robots Settings, Darkmode UI, Admin Footer Customizer, Admin Bar Resources Disabler, Admin Bar Hover Transition, SVG Upload Support, Heartbeat Optimizer, Revisions Limit, Autosave Interval, Disable Emojis, Dashicons, OEmbed, and other SEO tools.
+ * Version:           1.2.0
+ * Author:            WP Fedora
+ * Author URI:        wpfedora.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
  * Text Domain:       wp-fedora
- * Domain Path:       /languages
  */
 
 // If this file is called directly, abort.
