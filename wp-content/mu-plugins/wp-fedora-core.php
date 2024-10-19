@@ -122,6 +122,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_heartbeat_frequency' ) === false ) {
         update_option( 'wp_fedora_heartbeat_frequency', 15 ); // Heartbeat API frequency default to 15 seconds
     }
+    if ( get_option( 'wp_fedora_revision_limit' ) === false ) {
+        update_option( 'wp_fedora_revision_limit', -1 ); // Default WordPress behavior (-1, unlimited)
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
