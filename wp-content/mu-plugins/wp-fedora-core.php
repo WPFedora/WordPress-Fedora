@@ -80,6 +80,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_disable_admin_bar_transition' ) === false ) {
         update_option( 'wp_fedora_disable_admin_bar_transition', 0 ); // Admin Bar Hover Transition disabled by default
     }
+    if ( get_option( 'wp_fedora_disable_svg_upload' ) === false ) {
+        update_option( 'wp_fedora_disable_svg_upload', 0 ); // SVG Upload enabled by default
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
