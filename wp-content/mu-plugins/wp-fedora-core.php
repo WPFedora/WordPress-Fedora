@@ -15,6 +15,15 @@ if ( !defined( 'ABSPATH' ) ) {
 define( 'WP_FEDORA_DIR', plugin_dir_path( __FILE__ ) );
 define( 'WP_FEDORA_URL', plugin_dir_url( __FILE__ ) );
 
+// Check if the plugin is being loaded as a must-use plugin or standard plugin
+if ( defined( 'WPMU_PLUGIN_DIR' ) && strpos( __FILE__, WPMU_PLUGIN_DIR ) !== false ) {
+    // If loaded as an MU plugin
+    add_action( 'muplugins_loaded', 'wp_fedora_load_files' );
+} else {
+    // If loaded as a standard plugin
+    add_action( 'plugins_loaded', 'wp_fedora_load_files' );
+}
+
 // Hide the plugin from the plugins screen
 add_action('pre_current_active_plugins', 'wp_fedora_hide_from_plugins');
 function wp_fedora_hide_from_plugins() {
