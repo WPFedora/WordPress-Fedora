@@ -501,5 +501,12 @@ function wp_fedora_load_files() {
     if ( get_option( 'wp_fedora_enable_darkmode_ui' ) ) {
         require_once WP_FEDORA_DIR . 'wp-fedora/ui/admin-dark-theme.php'; // Darkmode UI feature file
     }
+    
+    if ( get_option( 'wp_fedora_disable_light_mode' ) ) {
+        wp_dequeue_style( 'wp-fedora-light-theme' );
+    } else {
+        require_once WP_FEDORA_DIR . 'wp-fedora/ui/admin-light-theme.php'; // Load Light Mode feature file
+    }
+
 }
 add_action( 'muplugins_loaded', 'wp_fedora_load_files' );
