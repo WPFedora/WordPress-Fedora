@@ -86,6 +86,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_disable_dashicons' ) === false ) {
         update_option( 'wp_fedora_disable_dashicons', 0 ); // Dashicons disabled by default on front-end
     }
+    if ( get_option( 'wp_fedora_enable_comments' ) === false ) {
+    update_option( 'wp_fedora_enable_comments', 0 ); // Comments disabled by default
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
