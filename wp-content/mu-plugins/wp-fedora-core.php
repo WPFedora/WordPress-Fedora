@@ -515,5 +515,116 @@ function wp_fedora_load_files() {
         require_once WP_FEDORA_DIR . 'wp-fedora/admin/remove-dashboard-widgets.php'; // Disable Dashboard Widgets feature file
     }
 
+    // Enable Admin Footer Customizer by default, disable if checked
+    if ( get_option( 'wp_fedora_disable_admin_footer_customizer' ) ) {
+        // Do nothing, Admin Footer Customizer is disabled
+    } else {
+        require_once WP_FEDORA_DIR . 'wp-fedora/ui/footer-customizer.php'; // Admin Footer Customizer feature file
+    }
+
+    // Disable Admin Bar Resources by default, enable if checked
+    if ( get_option( 'wp_fedora_enable_admin_bar_resources' ) ) {
+        // Admin Bar Resources is enabled, so do nothing
+    } else {
+        require_once WP_FEDORA_DIR . 'wp-fedora/ui/disable-admin-bar-resources.php'; // Disable Admin Bar Resources feature file
+    }
+
+    // Disable Admin Bar Hover Transition by default, enable if checked
+    if ( get_option( 'wp_fedora_disable_admin_bar_transition' ) ) {
+        // Admin Bar Hover Transition is enabled, so do nothing
+    } else {
+        require_once WP_FEDORA_DIR . 'wp-fedora/ui/admin-bar-transition.php'; // Disable Admin Bar Hover Transition feature file
+    }
+
+    // Disable SVG Upload by default, enable if checked
+    if ( get_option( 'wp_fedora_disable_svg_upload' ) ) {
+        // SVG Upload is disabled, so do nothing
+    } else {
+        require_once WP_FEDORA_DIR . 'wp-fedora/media/enable-svg-upload.php'; // Enable SVG Upload feature file
+    }
+    
+    // Disable Dashicons by default, enable if the checkbox is checked
+    if ( get_option( 'wp_fedora_disable_dashicons' ) ) {
+    // Dashicons are enabled because the checkbox is checked (i.e., do nothing to disable them)
+    } else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/performance/disable-dashicons.php'; // Disable Dashicons feature file
+    }
+    
+    // Disable comments by default; enable only if the checkbox is checked
+    if ( get_option( 'wp_fedora_enable_comments' ) ) {
+        // Comments are enabled, so do nothing
+    } else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/ui/disable-comments.php'; // Load the module to disable comments
+    }
+    
+    // Move Plugin File Editor to the last position by default; move it back to default if checkbox is checked
+    if ( get_option( 'wp_fedora_move_plugin_editor_default' ) ) {
+        // Leave Plugin File Editor in the default position (do nothing)
+    } else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/ui/move-plugin-file-editor.php'; // Move Plugin Editor to last position
+    }
+
+    // Move Theme File Editor to the last position by default; move it back to default if checkbox is checked
+    if ( get_option( 'wp_fedora_move_theme_editor_default' ) ) {
+    // Leave Theme File Editor in the default position (do nothing)
+    } else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/ui/move-theme-file-editor.php'; // Move Theme Editor to last position
+    }
+    
+    // Enable CPTs by default, disable if the checkbox is checked
+    if ( get_option( 'wp_fedora_disable_cpt' ) ) {
+        // CPTs are disabled because the checkbox is checked
+    } else {
+        require_once WP_FEDORA_DIR . 'wp-fedora/content-management/custom-post-type.php'; // Load CPT module
+    }
+    
+    // Robots.txt Editor enabled by default, disable if the checkbox is checked
+if ( get_option( 'wp_fedora_disable_robots_editor' ) ) {
+    // Do nothing, Robots.txt Editor is disabled
+} else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/seo-tools/robots-text-editor.php'; // Load Robots.txt Editor feature file
+}
+
+// 404 Monitor enabled by default, disable if the checkbox is checked
+if ( get_option( 'disable_404_monitor_log_' ) ) {
+    // Do nothing, 404 Monitor is disabled
+} else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/seo-tools/404-monitor.php'; // Load 404 Monitor feature file
+}
+
+// Load Sitemap Generator if not disabled
+if ( get_option( 'wp_fedora_disable_sitemap_generator' ) ) {
+    // Do nothing, sitemap generator is disabled
+} else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/sitemap/sitemap-generator.php'; // Load Sitemap Generator
+}
+
+if (get_option('wp_fedora_disable_htaccess_editor')) {
+    // Do nothing, .htaccess editor is disabled
+} else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/seo-tools/htaccess-file-editor.php'; // Load .htaccess Editor feature file
+}
+
+// Load Script Manager if not disabled
+if ( get_option( 'wp_fedora_disable_script_manager' ) ) {
+    // Do nothing, Script Manager is disabled
+} else {
+    require_once WP_FEDORA_DIR . 'wp-fedora/seo-tools/script-manager.php'; // Load Script Manager module
+}
+
+    // Load Heartbeat Optimizer settings
+    if ( get_option( 'wp_fedora_heartbeat_frequency' ) ) {
+        require_once WP_FEDORA_DIR . 'wp-fedora/performance/wordpress-heartbeat-optimizer.php'; // Heartbeat Optimizer feature file
+    }
+    
+    // Load Revisions Limit settings
+    if ( get_option( 'wp_fedora_revision_limit' ) != -1 ) {
+        require_once WP_FEDORA_DIR . 'wp-fedora/performance/limit-revisions.php'; // Revision Limit feature file
+    }
+
+    // Load Autosave Interval settings
+    if ( get_option( 'wp_fedora_autosave_interval' ) != 60 ) {
+        require_once WP_FEDORA_DIR . 'wp-fedora/performance/limit-autosave-intervals.php'; // Autosave Interval feature file
+    }
 }
 add_action( 'muplugins_loaded', 'wp_fedora_load_files' );
