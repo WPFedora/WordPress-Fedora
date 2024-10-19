@@ -71,6 +71,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_enable_dashboard_widgets' ) === false ) {
         update_option( 'wp_fedora_enable_dashboard_widgets', 0 ); // Dashboard Widgets disabled by default
     }
+    if ( get_option( 'wp_fedora_disable_admin_footer_customizer' ) === false ) {
+        update_option( 'wp_fedora_disable_admin_footer_customizer', 0 ); // Admin Footer Customizer enabled by default
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
