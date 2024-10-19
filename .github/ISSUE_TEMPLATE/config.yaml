@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+    - name: Ask Questions
+      url: https://github.com/carbondigitalus/veterandb-backend/issues/new/?category=question
+      about: Create a support ticket to get help from developers. Please note that our discord community can be faster.
+    - name: Facebook Group
+      url: https://www.facebook.com/groups/1589779601616030
+      about: The WP Fedora Community, for general questions or help.
