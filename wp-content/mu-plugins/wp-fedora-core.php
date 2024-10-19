@@ -68,6 +68,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_disable_light_mode' ) === false ) {
         update_option( 'wp_fedora_disable_light_mode', 0 ); // Light Mode enabled by default
     }
+    if ( get_option( 'wp_fedora_enable_dashboard_widgets' ) === false ) {
+        update_option( 'wp_fedora_enable_dashboard_widgets', 0 ); // Dashboard Widgets disabled by default
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
