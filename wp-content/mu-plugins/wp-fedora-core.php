@@ -508,5 +508,12 @@ function wp_fedora_load_files() {
         require_once WP_FEDORA_DIR . 'wp-fedora/ui/admin-light-theme.php'; // Load Light Mode feature file
     }
 
+    // Disable Dashboard Widgets by default, enable if checked
+    if ( get_option( 'wp_fedora_enable_dashboard_widgets' ) ) {
+        // Do nothing, dashboard widgets are enabled
+    } else {
+        require_once WP_FEDORA_DIR . 'wp-fedora/admin/remove-dashboard-widgets.php'; // Disable Dashboard Widgets feature file
+    }
+
 }
 add_action( 'muplugins_loaded', 'wp_fedora_load_files' );
