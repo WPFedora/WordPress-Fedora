@@ -163,7 +163,6 @@ function wp_fedora_register_settings() {
     register_setting( 'general', 'wp_fedora_disable_script_manager', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
 
 
-    // Add a new section under General Settings
     add_settings_section(
         'wp_fedora_settings_section', // Section ID
         'Fedora Settings',            // Title
