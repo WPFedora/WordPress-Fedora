@@ -432,6 +432,12 @@ function wp_fedora_heartbeat_field_callback( $args ) {
     echo "<input type='number' id='{$option_name}' name='{$option_name}' value='{$value}' min='5' max='300' />";
 }
 
+// Callback function to render the revision limit input field
+function wp_fedora_revision_limit_callback( $args ) {
+    $option_name = $args['label_for'];
+    $value = get_option( $option_name, -1 ); // Default value is -1 (unlimited)
+    echo "<input type='number' id='{$option_name}' name='{$option_name}' value='{$value}' min='-1' />"; // Allow -1 as minimum value
+}
 // Load necessary feature and admin files based on user settings
 function wp_fedora_load_files() {
     // Enable RSS feeds if checked
