@@ -102,6 +102,10 @@ function wp_fedora_set_default_options() {
         update_option( 'wp_fedora_disable_robots_editor', 0 ); // Robots.txt Editor enabled by default
     }
     
+    if (get_option('disable_404_monitor_log_') === false) {
+        update_option('disable_404_monitor_log_', 0);  // 404 Monitor enabled by default
+    }
+    
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
