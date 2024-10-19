@@ -95,6 +95,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_move_theme_editor_default' ) === false ) {
     update_option( 'wp_fedora_move_theme_editor_default', 0 ); // Move Theme Editor by default
     }
+    if ( get_option( 'wp_fedora_disable_cpt' ) === false ) {
+        update_option( 'wp_fedora_disable_cpt', 0 ); // Custom Post Types enabled by default (not disabled)
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
