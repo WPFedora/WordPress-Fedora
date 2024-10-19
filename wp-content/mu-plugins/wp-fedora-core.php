@@ -111,6 +111,10 @@ function wp_fedora_set_default_options() {
         update_option( 'wp_fedora_disable_sitemap_generator', 0 ); // Sitemap enabled by default
     }
     
+    if (get_option('wp_fedora_disable_htaccess_editor') === false) {
+    update_option('wp_fedora_disable_htaccess_editor', 0); // .htaccess Editor enabled by default
+    }
+    
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
