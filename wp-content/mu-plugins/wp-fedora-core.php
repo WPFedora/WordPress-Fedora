@@ -142,6 +142,26 @@ function wp_fedora_register_settings() {
     register_setting( 'general', 'wp_fedora_enable_rest_api', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
     register_setting( 'general', 'wp_fedora_disable_meta_robots', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
     register_setting( 'general', 'wp_fedora_enable_darkmode_ui', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_disable_light_mode', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_enable_dashboard_widgets', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_disable_admin_footer_customizer', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_enable_admin_bar_resources', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_disable_admin_bar_transition', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_disable_svg_upload', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_heartbeat_frequency', ['type' => 'integer', 'sanitize_callback' => 'absint'] );
+    register_setting( 'general', 'wp_fedora_revision_limit', ['type' => 'integer', 'sanitize_callback' => 'absint'] );
+    register_setting( 'general', 'wp_fedora_autosave_interval', ['type' => 'integer', 'sanitize_callback' => 'absint'] );
+    register_setting( 'general', 'wp_fedora_disable_dashicons', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_enable_comments', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_move_plugin_editor_default', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_move_theme_editor_default', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_disable_cpt', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting( 'general', 'wp_fedora_disable_robots_editor', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting('general', 'disable_404_monitor_log_', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean']);
+    register_setting( 'general', 'wp_fedora_disable_sitemap_generator', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting('general', 'wp_fedora_disable_htaccess_editor', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean']);
+    register_setting( 'general', 'wp_fedora_disable_script_manager', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+
 
     // Add a new section under General Settings
     add_settings_section(
