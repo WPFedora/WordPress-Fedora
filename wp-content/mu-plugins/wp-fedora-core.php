@@ -188,6 +188,7 @@ function wp_fedora_register_settings() {
         'wp_fedora_settings_section',
         ['label_for' => 'wp_fedora_enable_gutenberg']
     );
+    
 
     add_settings_field(
         'wp_fedora_disable_meta_editor',
