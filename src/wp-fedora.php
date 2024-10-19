@@ -9,7 +9,7 @@
  * Author URI:        vuewp.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       vwp-plugin
+ * Text Domain:       wp-fedora
  * Domain Path:       /languages
  */
 
@@ -18,7 +18,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-class VwpPlugin
+class WPFedora
 {
   public $plugin;
 
@@ -33,7 +33,7 @@ class VwpPlugin
   }
 
   public function settings_link( $links ) {
-    $settings_link = '<a href="admin.php?page=vwp_plugin">Settings</a>';
+    $settings_link = '<a href="admin.php?page=wp_fedora">Settings</a>';
     array_push($links, $settings_link);
     return $links;
   }
@@ -45,7 +45,7 @@ class VwpPlugin
   }
 
   public function add_admin_page() {
-    add_menu_page("Vue WordPress", 'Vue WordPress', 'manage_options', 'vwp_plugin', array($this, 'admin_index'), '');
+    add_menu_page("Vue WordPress", 'Vue WordPress', 'manage_options', 'wp_fedora', array($this, 'admin_index'), '');
   }
 
   public function admin_index() {
@@ -53,15 +53,15 @@ class VwpPlugin
   }
 }
 
-if ( class_exists('VwpPlugin') ) {
-  $vwpPlugin = new VwpPlugin();
-  $vwpPlugin->register();
+if ( class_exists('WPFedora') ) {
+  $WPFedora = new WPFedora();
+  $WPFedora->register();
 }
 
 // Activation
-require_once plugin_dir_path(__FILE__)  . 'includes/vwp-plugin-activate.php';
-register_activation_hook( __FILE__, array( 'VwpPluginActivate', 'activate' ) );
+require_once plugin_dir_path(__FILE__)  . 'includes/wp-fedora-activate.php';
+register_activation_hook( __FILE__, array( 'WPFedoraActivate', 'activate' ) );
 
 // Deactivation
-require_once plugin_dir_path(__FILE__)  . 'includes/vwp-plugin-deactivate.php';
-register_deactivation_hook( __FILE__, array( 'VwpPluginDeactivate', 'deactivate' ) );
+require_once plugin_dir_path(__FILE__)  . 'includes/wp-fedora-deactivate.php';
+register_deactivation_hook( __FILE__, array( 'WPFedoraDeactivate', 'deactivate' ) );

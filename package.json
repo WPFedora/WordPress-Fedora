@@ -1,5 +1,5 @@
 {
-  "name": "vwp-plugin",
+  "name": "wp-fedora",
   "version": "2.1.0",
   "description": "A boilerplate WordPress plugin in Vue.",
   "main": "index.js",

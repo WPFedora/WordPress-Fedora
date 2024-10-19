@@ -67,8 +67,8 @@ function removeTrivialFilesRecursively(dir) {
 
 // Gulp task to move PHP folder contents to root and delete the PHP folder
 gulp.task('clean-php-folder', function (done) {
-  const phpDir = path.resolve(__dirname, 'vwp-plugin/php');
-  const rootDir = path.resolve(__dirname, 'vwp-plugin');
+  const phpDir = path.resolve(__dirname, 'wp-fedora/php');
+  const rootDir = path.resolve(__dirname, 'wp-fedora');
 
   // Check if the PHP directory exists before proceeding
   if (!fs.existsSync(phpDir)) {
@@ -85,12 +85,12 @@ gulp.task('clean-php-folder', function (done) {
 
 // Copy necessary files to the package directory
 gulp.task('copy-files-to-folder', function () {
-  return gulp.src('src/**/*').pipe(gulp.dest('vwp-plugin'));
+  return gulp.src('src/**/*').pipe(gulp.dest('wp-fedora'));
 });
 
-// Recursively remove empty folders from the vwp-plugin directory
+// Recursively remove empty folders from the wp-fedora directory
 gulp.task('delete-empty-folders', function (done) {
-  const distDir = path.resolve(__dirname, 'vwp-plugin');
+  const distDir = path.resolve(__dirname, 'wp-fedora');
 
   function removeEmptyDirs(dir) {
     // Check if the directory exists before proceeding
@@ -128,7 +128,7 @@ gulp.task('delete-empty-folders', function (done) {
 // Clean up directories, excluding zip files
 gulp.task('delete-folders', function (done) {
   const distDir = path.resolve(__dirname, 'dist');
-  const pluginDir = path.resolve(__dirname, 'vwp-plugin');
+  const pluginDir = path.resolve(__dirname, 'wp-fedora');
 
   // Function to clean directories but exclude .zip files
   function cleanDirectoryExcludingZip(directory) {
@@ -152,9 +152,9 @@ gulp.task('delete-folders', function (done) {
   done();
 });
 
-// Remove .scss files from the vwp-plugin directory recursively
+// Remove .scss files from the wp-fedora directory recursively
 gulp.task('delete-scss-files', function (done) {
-  const distDir = path.resolve(__dirname, 'vwp-plugin');
+  const distDir = path.resolve(__dirname, 'wp-fedora');
 
   function removeScssFiles(dir) {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -177,15 +177,15 @@ gulp.task('delete-scss-files', function (done) {
 
 // Gulp task to remove trivial files after build
 gulp.task('delete-trivial-files', function (done) {
-  const distDir = path.resolve(__dirname, 'vwp-plugin'); // Set the directory to clean
-  // Start recursive deletion in the vwp-plugin directory
+  const distDir = path.resolve(__dirname, 'wp-fedora'); // Set the directory to clean
+  // Start recursive deletion in the wp-fedora directory
   removeTrivialFilesRecursively(distDir);
   done();
 });
 
-// Remove .ts files from the vwp-plugin directory recursively
+// Remove .ts files from the wp-fedora directory recursively
 gulp.task('delete-ts-files', function (done) {
-  const distDir = path.resolve(__dirname, 'vwp-plugin');
+  const distDir = path.resolve(__dirname, 'wp-fedora');
 
   function removeTsFiles(dir) {
     const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -209,7 +209,7 @@ gulp.task('delete-ts-files', function (done) {
 // Move built assets from dist to plugin package
 gulp.task('move-assets-from-dist', function (done) {
   if (fs.existsSync('dist')) {
-    return gulp.src('dist/**/*').pipe(gulp.dest('vwp-plugin'));
+    return gulp.src('dist/**/*').pipe(gulp.dest('wp-fedora'));
   } else {
     console.log('dist folder not found. Skipping move-dist task.');
     done();
@@ -218,8 +218,8 @@ gulp.task('move-assets-from-dist', function (done) {
 
 // Ensure the package directory exists
 gulp.task('verify-folders-exist', function (done) {
-  if (!fs.existsSync('vwp-plugin')) {
-    fs.mkdirSync('vwp-plugin', { recursive: true });
+  if (!fs.existsSync('wp-fedora')) {
+    fs.mkdirSync('wp-fedora', { recursive: true });
   }
   done();
 });
@@ -227,11 +227,11 @@ gulp.task('verify-folders-exist', function (done) {
 // Gulp task to dynamically load and zip the plugin package
 gulp.task('zip-plugin', async function () {
   const zip = (await import('gulp-zip')).default;
-  const pluginDir = 'vwp-plugin';
-  const outputName = 'vwp-plugin.zip';
+  const pluginDir = 'wp-fedora';
+  const outputName = 'wp-fedora.zip';
 
   return gulp
-    .src(`${pluginDir}/**/*`, { base: pluginDir }) // Grab all files inside the 'vwp-plugins' folder
+    .src(`${pluginDir}/**/*`, { base: pluginDir }) // Grab all files inside the 'wp-fedoras' folder
     .pipe(zip(outputName)) // Create the zip
     .pipe(gulp.dest('./')); // Save it to the root directory
 });
