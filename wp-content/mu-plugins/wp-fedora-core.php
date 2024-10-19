@@ -92,6 +92,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_move_plugin_editor_default' ) === false ) {
     update_option( 'wp_fedora_move_plugin_editor_default', 0 ); // Move Plugin Editor by default
     }
+    if ( get_option( 'wp_fedora_move_theme_editor_default' ) === false ) {
+    update_option( 'wp_fedora_move_theme_editor_default', 0 ); // Move Theme Editor by default
+    }
 }
 add_action( 'init', 'wp_fedora_set_default_options' );
 
