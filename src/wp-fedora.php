@@ -44,7 +44,13 @@ class WPFedora
   }
 
   public function add_admin_page() {
-    add_menu_page("Vue WordPress", 'Vue WordPress', 'manage_options', 'wp_fedora', array($this, 'admin_index'), '');
+    add_options_page(
+        'WP Fedora',                // Page title
+        'WP Fedora',                // Menu title
+        'manage_options',           // Capability required
+        'wp_fedora_settings',       // Menu slug
+        array($this, 'admin_index') // Callback function
+    );
   }
 
   public function admin_index() {
