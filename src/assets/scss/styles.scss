@@ -1,5 +1,12 @@
 // Import all of Bootstrap's CSS
 @use 'bootstrap/scss/bootstrap';
+
+// Variables
+$color-pink: #e5147f;
+$color-purple: #752c91;
+$color-gradient: linear-gradient(40deg, #{$color-pink} 0%, #{$color-purple} 40%);
+$color-gradient-active: linear-gradient(40deg, #{$color-pink} 0%, #{$color-purple} 100%);
+
 #app {
   h1 {
     color: #42b983;
