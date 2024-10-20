@@ -39,8 +39,8 @@ class WPFedora
 
   function enqueue_assets() {
     wp_enqueue_style( "$this->plugin-css", plugins_url('/assets/styles.css', __FILE__) );
-    wp_enqueue_script( "$this->plugin-js", plugins_url('/assets/main.js', __FILE__), null, null, true );
-    wp_enqueue_script( "$this->plugin-js", plugins_url('/assets/scripts.js', __FILE__), null, null, true );
+    wp_enqueue_script( "$this->plugin-main-js", plugins_url('/assets/main.js', __FILE__), null, null, true );
+    wp_enqueue_script( "$this->plugin-scripts-js", plugins_url('/assets/scripts.js', __FILE__), null, null, true );
   }
 
   public function add_admin_page() {
