@@ -1,0 +1,39 @@
+<template>
+  <div class="container-fluid mt-4">
+    <div class="row align-items-start">
+      <h1 class="mb-3">WP Fedora</h1>
+      <div class="fedora-menu">
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a class="nav-link active" :class="{ isGeneralLinkActive: active }" href="#">Active</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-9">
+        <slot></slot>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script lang="ts">
+// NPM Modules
+
+export default {
+  name: 'GlobalPageWrapper',
+  data() {
+    return {
+      isGeneralLinkActive: true
+    };
+  }
+};
+</script>
