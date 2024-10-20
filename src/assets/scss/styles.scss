@@ -1,3 +1,5 @@
+// Import all of Bootstrap's CSS
+@use 'bootstrap/scss/bootstrap';
 #app {
   h1 {
     color: #42b983;
