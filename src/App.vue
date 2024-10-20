@@ -1,11 +1,17 @@
 <template>
-  <div id="app">
+  <GlobalPageWrapper>
     <h1>Hello WordPress with Vue 3!</h1>
-  </div>
+  </GlobalPageWrapper>
 </template>
 
 <script lang="ts">
+// Custom Modules
+import GlobalPageWrapper from './components/templates/GlobalPageWrapper.vue';
+
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    GlobalPageWrapper
+  }
 };
 </script>
