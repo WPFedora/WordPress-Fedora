@@ -32,7 +32,7 @@ class WPFedora
   }
 
   public function settings_link( $links ) {
-    $settings_link = '<a href="admin.php?page=wp_fedora">Settings</a>';
+    $settings_link = '<a href="options-general.php?page=wp_fedora_settings">Settings</a>';
     array_push($links, $settings_link);
     return $links;
   }
