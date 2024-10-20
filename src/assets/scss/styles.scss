@@ -9,6 +9,20 @@ $color-gradient-active: linear-gradient(40deg, #{$color-pink} 0%, #{$color-purpl
 
 #app {
   h1 {
-    color: #42b983;
+    color: $color-pink;
+  }
+  .fedora-menu {
+    width: 250px;
+  }
+  .nav-link {
+    background-image: $color-gradient;
+    border-radius: 20px;
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+    &:hover,
+    &.active {
+      background-image: $color-gradient-active;
+    }
   }
 }
