@@ -49,7 +49,7 @@ function moveFolderContents(sourceDir, targetDir) {
   });
 }
 
-// Function to recursively check all files and remove trivial ones
+// Recursively check all files and remove trivial ones, but skip critical files like index.php
 function removeTrivialFilesRecursively(dir) {
   fs.readdirSync(dir).forEach((file) => {
     const filePath = path.join(dir, file);
@@ -58,9 +58,18 @@ function removeTrivialFilesRecursively(dir) {
     if (stat.isDirectory()) {
       // Recursively handle directories
       removeTrivialFilesRecursively(filePath);
-    } else if (isTrivialFile(filePath)) {
-      console.log(`Removing trivial file: ${filePath}`);
-      fs.unlinkSync(filePath); // Delete the trivial file
+    } else if (isTrivialFile(filePath) && file !== 'index.php') {
+      // Skip index.php
+      try {
+        if (fs.existsSync(filePath)) {
+          console.log(`Removing trivial file: ${filePath}`);
+          fs.unlinkSync(filePath); // Delete trivial file
+        }
+      } catch (err) {
+        console.error(`Failed to remove file: ${filePath}, Error: ${err.message}`);
+      }
+    } else {
+      console.log(`Skipping non-trivial or critical file: ${filePath}`);
     }
   });
 }
@@ -79,6 +88,12 @@ gulp.task('clean-php-folder', function (done) {
 
   // Move the contents of the PHP directory to the root, retaining subfolders
   moveFolderContents(phpDir, rootDir);
+
+  // Prevent deleting the index.php file after moving
+  const indexPath = path.join(rootDir, 'index.php');
+  if (fs.existsSync(indexPath)) {
+    console.log('index.php exists and will not be deleted.');
+  }
 
   done();
 });
@@ -130,7 +145,7 @@ gulp.task('delete-folders', function (done) {
   const distDir = path.resolve(__dirname, 'dist');
   const pluginDir = path.resolve(__dirname, 'wp-fedora');
 
-  // Function to clean directories but exclude .zip files
+  // Function to clean directories but exclude .zip and critical files like index.php
   function cleanDirectoryExcludingZip(directory) {
     if (fs.existsSync(directory)) {
       fs.readdirSync(directory).forEach((file) => {
@@ -139,8 +154,12 @@ gulp.task('delete-folders', function (done) {
 
         if (stat.isDirectory()) {
           fs.rmSync(filePath, { recursive: true, force: true });
-        } else if (!file.endsWith('.zip')) {
+        } else if (!file.endsWith('.zip') && file !== 'index.php') {
+          // Exclude index.php
+          console.log(`Deleting: ${filePath}`);
           fs.unlinkSync(filePath);
+        } else {
+          console.log(`Skipping: ${filePath}`);
         }
       });
     }
@@ -188,18 +207,21 @@ gulp.task('delete-ts-files', function (done) {
   const distDir = path.resolve(__dirname, 'wp-fedora');
 
   function removeTsFiles(dir) {
-    const entries = fs.readdirSync(dir, { withFileTypes: true });
+    if (fs.existsSync(dir)) {
+      // Ensure the directory exists
+      const entries = fs.readdirSync(dir, { withFileTypes: true });
 
-    entries.forEach((entry) => {
-      const filePath = path.join(dir, entry.name);
+      entries.forEach((entry) => {
+        const filePath = path.join(dir, entry.name);
 
-      if (entry.isDirectory()) {
-        removeTsFiles(filePath); // Recurse into subdirectories
-      } else if (entry.isFile() && entry.name.endsWith('.ts')) {
-        console.log(`Removing .ts file: ${filePath}`);
-        fs.unlinkSync(filePath); // Delete the .ts file
-      }
-    });
+        if (entry.isDirectory()) {
+          removeTsFiles(filePath); // Recurse into subdirectories
+        } else if (entry.isFile() && entry.name.endsWith('.ts')) {
+          console.log(`Removing .ts file: ${filePath}`);
+          fs.unlinkSync(filePath); // Delete the .ts file
+        }
+      });
+    }
   }
 
   removeTsFiles(distDir);
