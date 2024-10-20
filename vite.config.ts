@@ -83,12 +83,5 @@ export default defineConfig({
         }
       }
     }
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@use "src/assets/scss/_config.scss" as config;` // Global SCSS import
-      }
-    }
   }
 });
