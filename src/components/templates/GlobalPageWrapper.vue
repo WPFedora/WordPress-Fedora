@@ -40,6 +40,9 @@ export default {
     return {
       navLinkData: { ...this.navLinkDataProps }
     };
+    emitData() {
+      this.$emit('nav-link-clicked', { isGeneralActive: this.navLinkData.isGeneralActive });
+    },
     hideAllPages() {
       this.navLinkData.isGeneralActive = false;
     },
