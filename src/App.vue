@@ -1,5 +1,6 @@
 <template>
   <GlobalPageWrapper :nav-link-data-props="navLinkData" @nav-link-clicked="handleNavLinkClicked">
+    <GeneralSettings v-if="navLinkData.isGeneralActive" :general-settings-data-props="generalSettingsData" />
   </GlobalPageWrapper>
 </template>
 
