@@ -14,6 +14,10 @@ export default {
   components: {
     GeneralSettings,
     GlobalPageWrapper
+  },
+  data() {
+    return {
+    };
   }
 };
 </script>
