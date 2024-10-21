@@ -18,6 +18,9 @@ export default {
   data() {
     return {
       generalSettingsData: {},
+      navLinkData: {
+        isGeneralActive: true
+      }
     };
   }
 };
