@@ -10,6 +10,11 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      generalSettings: { ...this.generalSettingsDataProps }
+    };
+  },
   methods: {
     submitHandler() {}
   }
