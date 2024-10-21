@@ -30,9 +30,15 @@
 
 export default {
   name: 'GlobalPageWrapper',
+  props: {
+    navLinkDataProps: {
+      type: Object,
+      required: true
+    }
+  },
   data() {
     return {
-      isGeneralLinkActive: true
+      navLinkData: { ...this.navLinkDataProps }
     };
   }
 };
