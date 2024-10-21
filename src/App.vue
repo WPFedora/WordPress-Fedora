@@ -5,6 +5,7 @@
 
 <script lang="ts">
 // Custom Modules
+import GeneralSettings from './components/pages/GeneralSettings.vue';
 import GlobalPageWrapper from './components/templates/GlobalPageWrapper.vue';
 
 export default {
