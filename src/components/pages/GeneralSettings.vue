@@ -4,5 +4,8 @@
 <script lang="ts">
 export default {
   name: 'GeneralSettings',
+  methods: {
+    submitHandler() {}
+  }
 };
 </script>
