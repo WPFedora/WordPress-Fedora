@@ -40,6 +40,8 @@ export default {
     return {
       navLinkData: { ...this.navLinkDataProps }
     };
+  },
+  methods: {
     emitData() {
       this.$emit('nav-link-clicked', { isGeneralActive: this.navLinkData.isGeneralActive });
     },
