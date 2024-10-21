@@ -11,6 +11,7 @@ import GlobalPageWrapper from './components/templates/GlobalPageWrapper.vue';
 export default {
   name: 'App',
   components: {
+    GeneralSettings,
     GlobalPageWrapper
   }
 };
