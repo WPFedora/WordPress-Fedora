@@ -40,6 +40,9 @@ export default {
     return {
       navLinkData: { ...this.navLinkDataProps }
     };
+    hideAllPages() {
+      this.navLinkData.isGeneralActive = false;
+    },
   }
 };
 </script>
