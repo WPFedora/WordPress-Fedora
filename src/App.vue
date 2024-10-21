@@ -1,5 +1,5 @@
 <template>
-  <GlobalPageWrapper>
+  <GlobalPageWrapper :nav-link-data-props="navLinkData" @nav-link-clicked="handleNavLinkClicked">
   </GlobalPageWrapper>
 </template>
 
