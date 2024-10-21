@@ -46,6 +46,11 @@ export default {
     hideAllPages() {
       this.navLinkData.isGeneralActive = false;
     },
+    showGeneral() {
+      this.hideAllPages();
+      this.navLinkData.isGeneralActive = true;
+      this.emitData();
+    }
   }
 };
 </script>
