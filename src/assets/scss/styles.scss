@@ -11,6 +11,20 @@ $color-gradient-active: linear-gradient(40deg, #{$color-pink} 0%, #{$color-purpl
   h1 {
     color: $color-pink;
   }
+  #general-settings-page {
+    width: 80%;
+  }
+  .btn-primary {
+    --bs-btn-bg: unset;
+    --bs-btn-border-color: unset;
+    --bs-btn-border-radius: unset;
+    --bs-btn-padding-x: unset;
+    background-image: $color-gradient-active;
+    border-color: $color-pink;
+    border-radius: 20px;
+    padding: 8px 40px;
+    text-transform: uppercase;
+  }
   .fedora-menu {
     width: 250px;
   }
@@ -23,6 +37,62 @@ $color-gradient-active: linear-gradient(40deg, #{$color-pink} 0%, #{$color-purpl
     &:hover,
     &.active {
       background-image: $color-gradient-active;
+      text-transform: uppercase;
+    }
+  }
+  .form-switch-custom {
+    display: inline-block;
+    height: 30px;
+    margin-bottom: 3rem;
+    position: relative;
+    width: 100%;
+    input {
+      height: 0;
+      opacity: 0;
+      width: 0;
+    }
+    .form-check-label,
+    .form-text {
+      margin-left: 3rem;
+    }
+  }
+  .slider {
+    background-color: #ccc;
+    border-radius: 34px;
+    bottom: 0;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transition: 0.4s;
+    top: 0;
+    width: 60px;
+    -webkit-transition: 0.4s;
+    &:before {
+      position: absolute;
+      content: '';
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: 0.4s;
+      transition: 0.4s;
+      border-radius: 50%;
+    }
+  }
+  input {
+    &:checked + .slider {
+      background-color: #2196f3;
+    }
+
+    &:focus + .slider {
+      box-shadow: 0 0 1px #2196f3;
+    }
+    &:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
     }
   }
 }
