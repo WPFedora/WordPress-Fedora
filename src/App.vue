@@ -1,6 +1,5 @@
 <template>
   <GlobalPageWrapper>
-    <h1>Hello WordPress with Vue 3!</h1>
   </GlobalPageWrapper>
 </template>
 
