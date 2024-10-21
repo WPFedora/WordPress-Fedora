@@ -5,7 +5,7 @@
       <div class="fedora-menu">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" :class="{ isGeneralLinkActive: active }" href="#">Active</a>
+            <a class="nav-link active" :class="{ isGeneralActive: active }" @click.prevent="" href="#">General</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
