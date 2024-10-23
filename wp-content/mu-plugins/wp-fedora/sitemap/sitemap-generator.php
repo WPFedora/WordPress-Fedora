@@ -34,7 +34,15 @@ function wp_fedora_generate_sitemap() {
 
 // Build the sitemap structure in XML format with XSL reference
 function wp_fedora_build_sitemap_xml() {
-    $stylesheet_path = home_url('wp-content/mu-plugins/wp-fedora/sitemap/sitemap.xsl'); 
+    // Determine if the plugin is loaded as a mu-plugin or standard plugin
+    if (defined('WPMU_PLUGIN_DIR') && strpos(__FILE__, WPMU_PLUGIN_DIR) !== false) {
+        // mu-plugin path
+        $stylesheet_path = home_url('wp-content/mu-plugins/wp-fedora/sitemap/sitemap.xsl');
+    } else {
+        // Standard plugin path
+        $stylesheet_path = home_url('/wp-content/plugins/wp-fedora-core/wp-fedora/sitemap/sitemap.xsl');
+    }
+
     $urlset = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
     $urlset .= '<?xml-stylesheet type="text/xsl" href="' . $stylesheet_path . '"?>' . PHP_EOL;
     $urlset .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . PHP_EOL;
@@ -46,7 +54,7 @@ function wp_fedora_build_sitemap_xml() {
     if (!get_option('wp_fedora_disable_pages')) {
         $urlset .= wp_fedora_generate_post_type_urls('page');
     }
-    
+
     if (!get_option('wp_fedora_disable_posts')) {
         $urlset .= wp_fedora_generate_post_type_urls('post');
     }
