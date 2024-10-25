@@ -1,7 +1,7 @@
 {
   "name": "wp-fedora",
   "version": "2.0.0",
-  "description": "A boilerplate WordPress plugin in Vue.",
+  "description": "WordPress Fedora is a custom-built distribution of WordPress, designed for SEO professionals and advanced users who seek a streamlined and efficient environment tailored specifically for optimizing and managing SEO-driven websites.",
   "main": "index.js",
   "scripts": {
     "start:dev": "vite",
