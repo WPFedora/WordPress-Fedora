@@ -134,91 +134,61 @@ Below, you will find our common commands and notes for general usage.
 
 ### Vite Build
 
-Vite will convert all of your `.scss` to `.css`. They, along with all `.js` files, will all be placed in a `/dist` folder.
+Vite will convert all of your `.scss` to `.css`. These files, along with all `.js` files, will all be placed in a `/dist` folder.
 
-### Build Package
+### Build Plugin Core
 
 This covers the series of tasks that are used to initially build the plugin folder. Found in both `build:dev` and `build:prod` scripts.
 
-1. Verify Folders Exist
+1. create-plugin-folders
 
-   - Here, we are checking to see if you have manually created your plugin folder. If you have not already created your plugin folder, we will create one for you.
-   - This folder needs to be present for subsequent tasks.
+   - This will check to see if folders `wp-fedora-core` and `wp-fedora-core/wp-fedora` both exist. If not, they will be created.
 
-2. Copy Files to Folder
+2. copy-php-to-plugin-folder
 
-   - Here, we are copying your entire `/src` folder contents into your plugin folder.
+   - This copies the `php` folder over to `wp-fedora-core/wp-fedora`.
 
-3. Move Assets from Dist
-   - Vite is run before Gulp. All of your `.js` and `.css` files will be located there.
-   - For this task, those files built into the `/dist` folder get moved into your plugin folder.
+3. copy-assets-from-dist-to-plugin-folder
 
-### Clean Package
+   - This copies the `assets` folder from `dist/assets` over to `wp-fedora-core/wp-fedora/assets`.
+
+4. copy-img-to-plugin-assets
+
+   - This copies the `img` folder from `src/assets/img` over to `wp-fedora-core/wp-fedora/assets/img`.
+
+5. copy-xsl-to-plugin-assets
+
+   - This copies the `*.xsl` file from `src/**/*` (which is where the sitemap file is located) over to `wp-fedora-core/wp-fedora/assets`.
+
+6. move-wp-fedora-core-php
+   - When the `php` is copied over, the `wp-fedora-core.php` file gets put into the `wp-fedora-core/wp-fedora` folder. This task will move it up one level to the `wp-fedora-core` folder.
+
+### Clean Plugin Core
 
 This covers the series of tasks that are used to clean up the plugin folder. Found in both `build:dev` and `build:prod` scripts.
 
-1. Delete Trivial Files
-   - Here, we delete all of the trivial files.
+1. convert-php-encoding
 
-A trivial file typically refers to a file that contains very little or no meaningful content. These files often have minimal or placeholder code, which serves little purpose in the context of a larger project. In the context of software builds and packaging, trivial files are usually considered unnecessary and can be removed to optimize the final package.
+   - With Vite, the PHP files don't get the correct file encoding. This step properly converts them to `utf-8` for WordPress.
 
-Here are some common examples of trivial files:
+2. delete-empty-folders
 
-- **Empty files:** Files that have no content at all.
-- **Export placeholder files:** Files that contain only trivial exports like export {};, often created to satisfy module systems but don't serve any real purpose.
-- **_Files with a single constant or trivial content:_** For example, a file that only defines a single constant but is never used meaningfully. See examples below:
+   - This will recursively delete all empty folders from the parent plugin folder `wp-fedora-core`.
 
-Empty File:
+### Zip Plugin Core
 
-```js
-// This is a completely empty file
-```
+For this one, we will "compress" or "zip" the plugin folder. This is the step that will produce the final plugin zip file that you upload into the WordPress website.
 
-Export Placeholder:
-
-```js
-export {};
-```
-
-Trivial Content:
-
-```js
-const someVar = 'value'; // A single trivial statement with no broader impact
-```
-
-Removing these files can help reduce clutter, decrease the size of your final builds, and improve overall project performance.
-
-2. Delete SCSS Files
-
-   - Delete all files with a `.scss` extension from the plugin folder . We have already used Vite to build these `.css` files, so we don't need to retain them.
-
-3. Clean PHP Folder
-
-   - The majority of our PHP is located in `/src/php`.
-   - During the move step above, we are moving this `php` folder into out plugin folder.
-     - Example: `/wp-fedora/php`
-   - Here in this task, we will move all of those contents up a tree level (i.e., to `/wp-fedora`).
-   - This step will leave an empty `php` folder intentionally.
-
-4. Delete Empty Folders
-
-   - Deleting files out of our plugin folder, and moving the PHP files up a level, will leave empty folders lying around.
-   - Here, we will recursively delete all empty folders from the parent plugin folder (i.e., `/wp-fedora`).
+Found in `build:prod` script.
 
 ### Clean Project
 
 This covers the series of tasks that are used to clean up the plugin folder after the zip file is created. Found in both `build:dev` and `build:prod` scripts.
 
-1. Delete Folders
+1. delete-build-folders
 
    - Delete the `/dist` folder that is generated by Vite.
-   - Delete the plugin folder (i.e., `/wp-fedora`).
-
-### Zip Project
-
-For this one, we will "compress" or "zip" the plugin folder. This is the step that will produce the final plugin zip file that you upload into the WordPress website. Since this one is just a task, we don't have a need to do anything more than zip the folder.
-
-Found in `build:prod` script.
+   - Delete the plugin folder (i.e., `/wp-fedora-core`).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
