@@ -1,39 +1,29 @@
 {
   "name": "wp-fedora",
-  "version": "2.1.0",
+  "version": "2.0.0",
   "description": "A boilerplate WordPress plugin in Vue.",
   "main": "index.js",
   "scripts": {
     "start:dev": "vite",
-    "build:dev": "gulp clean-project && vite build && gulp build-package && gulp clean-package",
-    "build:prod": "npm run build:dev && gulp zip-plugin && gulp clean-project",
-    "helper:build-package": "gulp build-package",
-    "helper:clean-package": "gulp clean-package",
-    "helper:clean-project": "gulp clean-project",
-    "helper:zip-plugin": "gulp zip-plugin"
+    "build:dev": "vite build && gulp build-plugin-core && gulp clean-plugin-core",
+    "build:prod": "npm run build:dev && gulp zip-plugin-core"
   },
   "author": "Jared Ledbetter",
   "license": "ISC",
   "devDependencies": {
-    "@types/bootstrap": "^5.2.10",
-    "@types/node": "^22.7.6",
-    "@types/rollup": "^0.54.0",
-    "@typescript-eslint/parser": "^8.9.0",
-    "@vitejs/plugin-vue": "^5.1.4",
-    "@vue/compiler-sfc": "^3.5.12",
+    "@types/node": "^22.7.9",
     "del": "^8.0.0",
     "eslint": "9.12.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "glob": "^11.0.0",
     "gulp": "^5.0.0",
+    "gulp-iconv-lite": "^0.0.1",
     "gulp-zip": "^6.0.0",
     "prettier": "^3.3.3",
     "sass": "^1.80.2",
     "typescript": "^5.6.3",
-    "vite": "^5.4.9",
-    "vue": "^3.5.12",
-    "vue-loader": "^17.3.1"
+    "vite": "^5.4.9"
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",

@@ -4,31 +4,35 @@ import path, { resolve } from 'path';
 import { existsSync, readFileSync } from 'fs';
 
 // NPM Modules
-import vue from '@vitejs/plugin-vue';
 import { glob } from 'glob';
 import { defineConfig } from 'vite';
 
-// Use glob to find all valid TypeScript and Vue files, excluding .d.ts files
-const jsEntryPoints = glob.sync(resolve(__dirname, 'src/**/*.ts')).filter((file) => !file.endsWith('.d.ts'));
+// Use glob to find all valid JavaScript and SCSS files
+const jsEntryPoints = glob.sync(resolve(__dirname, 'src/**/*.js'));
+const scssEntryPoints = glob.sync(resolve(__dirname, 'src/**/*.scss')); // Glob for all SCSS files
 
-// Create an input object where each JS/TS file is treated as a separate entry
-const inputFiles = jsEntryPoints.reduce((entries, file) => {
-  const name = file.replace(/.*[\\\/]/, '').replace(/\.ts$/, ''); // Use filename without extension as entry name
-  entries[name] = file;
-  return entries;
-}, {});
+// Create an input object where each JS file is treated as a separate entry
+const inputFiles = jsEntryPoints.reduce(
+  (entries, file) => {
+    const name = file.replace(/.*[\\\/]/, '').replace(/\.js$/, ''); // Use filename without extension as entry name
+    entries[name] = file;
+    return entries;
+  },
+  {} as Record<string, string>
+);
 
-// Add the SCSS entry point explicitly
-inputFiles['styles'] = resolve(__dirname, 'src/assets/scss/styles.scss');
+// Add all SCSS files as entries in inputFiles
+scssEntryPoints.forEach((file) => {
+  const name = file.replace(/.*[\\\/]/, '').replace(/\.scss$/, ''); // Use filename without extension as entry name
+  inputFiles[name] = file;
+});
 
 // Function to check if a file is empty or trivial
-function isOriginalFileEmptyOrTrivial(filePath: string) {
-  // Skip transformed files with query params like '?vue&type=script'
+function isOriginalFileEmptyOrTrivial(filePath: string): boolean {
   if (filePath.includes('?')) {
     return false;
   }
 
-  // Check if the file exists and read its contents
   if (!existsSync(filePath)) {
     return false;
   }
@@ -39,7 +43,6 @@ function isOriginalFileEmptyOrTrivial(filePath: string) {
 
 export default defineConfig({
   plugins: [
-    vue(),
     {
       name: 'watch-src-folder-and-run-script',
       handleHotUpdate({ file, server }) {
@@ -64,14 +67,14 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     rollupOptions: {
-      input: inputFiles, // Use the dynamically created input object
+      input: inputFiles, // Use the dynamically created input object (JS and SCSS)
       output: {
-        entryFileNames: 'assets/[name].js',
-        chunkFileNames: 'assets/[name].js',
-        assetFileNames: (assetInfo) => {
-          // Explicitly name styles.scss as styles.css
-          if (assetInfo.name === 'styles.css' || assetInfo.name === 'styles.scss') {
-            return 'assets/styles.css';
+        entryFileNames: 'assets/js/[name].js', // JS files in assets/js
+        chunkFileNames: 'assets/js/[name].js',
+        assetFileNames: (assetInfo: any) => {
+          if (assetInfo.name.endsWith('.css')) {
+            // Put CSS files in the assets/css folder
+            return 'assets/css/[name].css';
           }
           return 'assets/[name].[ext]'; // Default behavior for other assets
         },
