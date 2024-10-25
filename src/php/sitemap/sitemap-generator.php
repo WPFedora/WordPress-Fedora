@@ -43,10 +43,10 @@ function wp_fedora_build_sitemap_xml() {
     // Determine if the plugin is loaded as a mu-plugin or standard plugin
     if (defined('WPMU_PLUGIN_DIR') && strpos(__FILE__, WPMU_PLUGIN_DIR) !== false) {
         // mu-plugin path
-        $stylesheet_path = home_url('wp-content/mu-plugins/wp-fedora/sitemap.xsl');
+        $stylesheet_path = home_url('wp-content/mu-plugins/wp-fedora/assets/sitemap.xsl');
     } else {
         // Standard plugin path
-        $stylesheet_path = home_url('/wp-content/plugins/wp-fedora/assets/sitemap.xsl');
+        $stylesheet_path = home_url('/wp-content/plugins/wp-fedora-core/wp-fedora/assets/sitemap.xsl');
     }
 
     $urlset = '<?xml version="1.0" encoding="UTF-8"?>' . PHP_EOL;
