@@ -248,4 +248,4 @@ Without these people and tools, life would be too complicated.
 [issues-shield]: https://img.shields.io/github/issues/WPFedora/WordPress-Fedora.svg?style=for-the-badge
 [issues-url]: https://github.com/WPFedora/WordPress-Fedora/issues
 [license-shield]: https://img.shields.io/github/license/WPFedora/WordPress-Fedora.svg?style=for-the-badge
-[license-url]: https://github.com/WPFedora/WordPress-Fedora/blob/master/license.md
+[license-url]: https://github.com/WPFedora/WordPress-Fedora/blob/main/license.md
