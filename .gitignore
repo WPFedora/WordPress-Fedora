@@ -1,5 +1,5 @@
 node_modules
 dist
 *.zip
-.ds_store
+.DS_Store
 wp-fedora-core
