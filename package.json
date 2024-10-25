@@ -9,7 +9,7 @@
     "build:prod": "npm run build:dev && gulp zip-plugin-core && gulp clean-project"
   },
   "author": "Jared Ledbetter",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.7.9",
     "del": "^8.0.0",
