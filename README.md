@@ -13,7 +13,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 
-![image](_repo/cover-image.jpg)
+<img src="_repo/cover-image.jpg" alt="WP Fedora Cover Image" width="600" style="margin-left:auto;margin-right:auto;" />
 
 # WordPress Fedora Plugin
 
