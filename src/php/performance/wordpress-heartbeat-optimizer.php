@@ -6,6 +6,11 @@ Version: 1.0
 Author: WP Fedora
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 // Modify the Heartbeat API frequency
 function wp_fedora_optimize_heartbeat( $settings ) {
     $frequency = get_option( 'wp_fedora_heartbeat_frequency', 15 ); // Default 15 seconds

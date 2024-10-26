@@ -6,8 +6,9 @@ Version: 1.3
 Author: WP Fedora
 */
 
-if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
 }
 
 // Add the menu option under Tools

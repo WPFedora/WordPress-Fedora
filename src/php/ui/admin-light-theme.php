@@ -6,6 +6,11 @@ Version: 1.0
 Author: WP Fedora
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 function wp_fedora_enqueue_light_theme() {
     // Define the path to the correct admin-light-theme.css file
     $file_path = plugin_dir_path(__FILE__) . '../assets/css/admin-light-theme.css';

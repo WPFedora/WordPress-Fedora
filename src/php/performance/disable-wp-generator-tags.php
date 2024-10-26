@@ -6,8 +6,14 @@ Version: 1.0
 Author: WP Fedora
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 // Disable the WordPress generator tag (WordPress version number in the meta tag)
 function wp_fedora_disable_wp_generator_tag() {
     remove_action('wp_head', 'wp_generator');
 }
+
 add_action('init', 'wp_fedora_disable_wp_generator_tag');
