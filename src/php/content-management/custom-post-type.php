@@ -6,7 +6,8 @@ Author: WP Fedora
 Version: 1.5
 */
 
-if (!defined('ABSPATH')) {
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
     exit;
 }
 

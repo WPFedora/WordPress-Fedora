@@ -6,8 +6,9 @@ Version: 1.2
 Author: Your Name
 */
 
-if (!defined('ABSPATH')) {
-    exit; // Exit if accessed directly
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
 }
 
 // Add the Script Manager menu under Tools

@@ -116,9 +116,9 @@ Below, you will find our common commands and notes for general usage.
      - Build the new plugin folder.
      - Delete the current folder in your WP website.
      - Copy your new plugin folder into the website's plugins folder.
-2. Run `npm run build:prod`.
+2. Run `npm run build:plugin`.
 
-   - When you build in prod, the plugin folder **IS ZIPPED** and ready for upload to a WP website.
+   - When you build the plugin, the plugin folder **IS ZIPPED** and ready for upload to a WP website.
 
 3. Run `npm run start:dev`.
 

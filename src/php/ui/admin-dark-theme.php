@@ -6,6 +6,11 @@ Version: 1.2
 Author: WP Fedora
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 // Enqueue dark mode CSS for the admin area with cache-busting
 function wp_fedora_enqueue_darkmode_ui() {
     // Cache-busting: Use file modification time as the version number to force reloads when the file changes

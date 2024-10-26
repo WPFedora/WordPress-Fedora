@@ -6,6 +6,11 @@ Version: 1.3
 Author: WP Fedora
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 // Disable WordPress default robots meta tag
 remove_action('wp_head', 'wp_robots', 1);
 
