@@ -6,6 +6,10 @@ const path = require('path');
 const gulp = require('gulp');
 const iconv = require('gulp-iconv-lite');
 
+// Variables
+const packagePath = path.resolve(__dirname, 'package.json');
+const phpFilePath = path.resolve(__dirname, 'src/php/wp-fedora-core.php');
+
 // Gulp task to convert all PHP files encoding from any encoding (like us-ascii) to utf-8
 gulp.task('convert-php-encoding', function () {
   return gulp
@@ -138,6 +142,25 @@ gulp.task('move-wp-fedora-core-php', function (done) {
     console.log('wp-fedora-core.php not found in the plugin folder.');
   }
 
+  done();
+});
+
+// Gulp task to sync the version from package.json to the PHP file
+gulp.task('update-plugin-version', function (done) {
+  // Read package.json
+  const packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
+  const version = packageJson.version;
+
+  // Read PHP file content
+  const phpFileContent = fs.readFileSync(phpFilePath, 'utf8');
+
+  // Replace the version in the PHP file's comment header
+  const updatedPhpFileContent = phpFileContent.replace(/Version:\s*\d+\.\d+\.\d+/, `Version:           ${version}`);
+
+  // Write updated content back to the PHP file
+  fs.writeFileSync(phpFilePath, updatedPhpFileContent);
+
+  console.log(`PHP file updated to version ${version}`);
   done();
 });
 
