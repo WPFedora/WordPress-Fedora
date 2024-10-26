@@ -6,6 +6,11 @@ Version: 1.0
 Author: WP Fedora
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 // Function to remove RSS feed links from the <head> section
 function wp_fedora_disable_rss_feed_links() {
     // Remove RSS feed links

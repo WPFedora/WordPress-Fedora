@@ -6,6 +6,11 @@ Version: 1.1
 Author: WP Fedora
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 // Add columns to any CPT list table
 function bulk_meta_editor_add_columns($columns) {
     $columns['meta_title'] = __('Meta Title', 'bulk-meta-editor');

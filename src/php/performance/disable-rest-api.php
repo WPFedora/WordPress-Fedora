@@ -6,6 +6,11 @@ Version: 1.1
 Author: WP Fedora
 */
 
+// Exit if accessed directly
+if ( !defined( 'ABSPATH' ) ) {
+    exit;
+}
+
 // Disable REST API for unauthenticated users
 function wp_fedora_disable_rest_api( $access ) {
     // Allow REST API access only for logged-in users
