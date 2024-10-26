@@ -65,6 +65,7 @@ export default defineConfig({
     }
   ],
   build: {
+    minify: true, // Enable minification for both JS and CSS
     outDir: 'dist',
     rollupOptions: {
       input: inputFiles, // Use the dynamically created input object (JS and SCSS)
