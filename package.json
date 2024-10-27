@@ -1,6 +1,6 @@
 {
   "name": "wp-fedora",
-  "version": "1.3.2",
+  "version": "1.4.0",
   "description": "WordPress Fedora is a custom-built distribution of WordPress, designed for SEO professionals and advanced users who seek a streamlined and efficient environment tailored specifically for optimizing and managing SEO-driven websites.",
   "main": "index.js",
   "scripts": {
@@ -8,6 +8,7 @@
     "build:dev": "vite build && gulp build-plugin-core",
     "build:wordpress": "npm run build:dev && gulp build-wordpress-distro && gulp cleanup-plugin && gulp cleanup-distro",
     "build:plugin": "npm run build:dev && gulp cleanup-plugin",
+    "build:release": "gulp update-plugin-version && npm run build:plugin && npm run build:wordpress",
     "version:major": "npm version major",
     "version:minor": "npm version minor",
     "version:patch": "npm version patch"
