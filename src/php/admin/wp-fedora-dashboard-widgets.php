@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 define('WP_FEDORA_REPO_URL', 'https://api.github.com/repos/WPFedora/WordPress-Fedora');
 define('WP_FEDORA_CURRENT_VERSION', '1.3.2'); // Update this to the current version of your plugin
 
-// Step 1: Add the Dashboard Widgets
+// Add the Dashboard Widgets
 add_action('wp_dashboard_setup', 'wpfedora_add_dashboard_widgets');
 function wpfedora_add_dashboard_widgets() {
     // Add WP Fedora Information widget
@@ -27,7 +27,7 @@ function wpfedora_add_dashboard_widgets() {
     
 }
 
-// Step 2: Display Function for WP Fedora Information Widget
+// Display Function for WP Fedora Information Widget
 function wpfedora_dashboard_widget_display() {
     // Start the widget container with custom styling
     echo '<div style="padding: 15px; border: 1px solid #e2e4e7; border-radius: 8px; background-color: #f9fafb;">';
@@ -76,7 +76,7 @@ function wpfedora_dashboard_widget_display() {
     echo '</div>';
 }
 
-// Step 3: Display Function for Randomize Last Modified Dates Widget
+// Display Function for Randomize Last Modified Dates Widget
 function wpfedora_random_date_widget_display() {
     echo '<div style="padding: 15px; border: 1px solid #e2e4e7; border-radius: 8px; background-color: #f9fafb;">';
     echo '<h3 style="font-size: 18px; margin-top: 0; color: #2e3c52;">Randomize Last Modified Dates</h3>';
@@ -126,7 +126,10 @@ function wpfedora_randomize_last_modified_dates($start_date, $end_date) {
         // Update post modified and post modified GMT
         $wpdb->update(
             $wpdb->posts,
-            ['post_modified' => $random_date, 'post_modified_gmt' => get_gmt_from_date($random_date)],
+            [
+                'post_modified' => $random_date, 
+                'post_modified_gmt' => gmdate('Y-m-d H:i:s', $random_timestamp)
+            ],
             ['ID' => $post->ID]
         );
         $updated_count++;
@@ -208,7 +211,7 @@ function wpfedora_search_replace($search_term, $replace_term, $table) {
     return $replaced_count;
 }
 
-// Step 4: Get Latest Release URL from GitHub
+// Get Latest Release URL from GitHub
 function wpfedora_get_latest_release_url() {
     $response = wp_remote_get(WP_FEDORA_REPO_URL . '/releases/latest');
     if (is_wp_error($response)) {
@@ -222,7 +225,7 @@ function wpfedora_get_latest_release_url() {
     return false;
 }
 
-// Step 5: Check for Updates
+// Check for Updates
 function wpfedora_check_for_updates() {
     $latest_release_url = wpfedora_get_latest_release_url();
     if (!$latest_release_url) {
@@ -241,7 +244,7 @@ function wpfedora_check_for_updates() {
     }
 }
 
-// Step 6: Download and Install Update from GitHub
+// Download and Install Update from GitHub
 function wpfedora_update_plugin_from_github() {
     $download_url = wpfedora_get_latest_release_url();
     if (!$download_url) {
@@ -260,7 +263,7 @@ function wpfedora_update_plugin_from_github() {
     return 'Plugin updated successfully!';
 }
 
-// Step 7: Schedule a 24-Hour Update Check on Plugin Activation
+// Schedule a 24-Hour Update Check on Plugin Activation
 register_activation_hook(__FILE__, 'wpfedora_schedule_24hr_update_check');
 function wpfedora_schedule_24hr_update_check() {
     if (!wp_next_scheduled('wpfedora_24hr_update_check')) {
@@ -281,7 +284,7 @@ function wpfedora_scheduled_update_check() {
     wp_schedule_single_event(time() + 86400, 'wpfedora_24hr_update_check');
 }
 
-// Step 8: Clear the Scheduled Event on Plugin Deactivation
+// Clear the Scheduled Event on Plugin Deactivation
 register_deactivation_hook(__FILE__, 'wpfedora_clear_24hr_update_check');
 function wpfedora_clear_24hr_update_check() {
     wp_clear_scheduled_hook('wpfedora_24hr_update_check');
