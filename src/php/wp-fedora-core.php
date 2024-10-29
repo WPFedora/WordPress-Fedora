@@ -123,6 +123,9 @@ function wp_fedora_set_default_options() {
     if ( get_option( 'wp_fedora_disable_dashboard_widget' ) === false ) {
         update_option( 'wp_fedora_disable_dashboard_widget', 0 ); // Dashboard Widget enabled by default
     }
+    if (get_option('wp_fedora_disable_breadcrumbs') === false) {
+        update_option('wp_fedora_disable_breadcrumbs', 0);  // Breadcrumbs enabled by   default
+    }
     if ( get_option( 'wp_fedora_heartbeat_frequency' ) === false ) {
         update_option( 'wp_fedora_heartbeat_frequency', 15 ); // Heartbeat API frequency default to 15 seconds
     }
@@ -166,23 +169,23 @@ function wp_fedora_register_settings() {
     register_setting('general', 'wp_fedora_disable_htaccess_editor', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean']);
     register_setting( 'general', 'wp_fedora_disable_script_manager', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
     register_setting( 'general', 'wp_fedora_disable_dashboard_widget', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean'] );
+    register_setting('general', 'wp_fedora_disable_breadcrumbs', ['type' => 'boolean', 'sanitize_callback' => 'rest_sanitize_boolean']);
 
 
     add_settings_section(
-        'wp_fedora_settings_section', // Section ID
-        'Fedora Settings',            // Title
-        '__return_false',             // No callback function to display description
-        'general'                     // Displayed on General Settings page
+        'wp_fedora_settings_section', 
+        'Fedora Settings',            
+        '__return_false',             
+        'general'                     
     );
 
-    // Add fields for toggling features
     add_settings_field(
-        'wp_fedora_enable_rss',          // Field ID
-        'Enable RSS Feeds',              // Field Title
-        'wp_fedora_toggle_field_callback', // Callback to render the checkbox
-        'general',                        // Page to display the section (General Settings)
-        'wp_fedora_settings_section',     // Section ID
-        ['label_for' => 'wp_fedora_enable_rss'] // Label for accessibility
+        'wp_fedora_enable_rss',          
+        'Enable RSS Feeds',              
+        'wp_fedora_toggle_field_callback', 
+        'general',                        
+        'wp_fedora_settings_section',     
+        ['label_for' => 'wp_fedora_enable_rss'] 
     );
 
     add_settings_field(
@@ -403,6 +406,15 @@ function wp_fedora_register_settings() {
     );
 
     add_settings_field(
+        'wp_fedora_disable_breadcrumbs',      
+        'Disable Breadcrumbs',                
+        'wp_fedora_toggle_field_callback',    
+        'general',                            
+        'wp_fedora_settings_section',         
+        ['label_for' => 'wp_fedora_disable_breadcrumbs'] 
+    );
+
+    add_settings_field(
         'wp_fedora_heartbeat_frequency',
         'Heartbeat API Frequency (seconds)',
         'wp_fedora_heartbeat_field_callback',
@@ -485,6 +497,11 @@ function wp_fedora_load_files() {
         // CPTs are disabled because the checkbox is checked
     } else {
         require_once WP_FEDORA_DIR . 'wp-fedora/content-management/custom-post-type.php'; // Load CPT module
+    }
+    if (get_option('wp_fedora_disable_breadcrumbs')) {
+        // Breadcrumbs are disabled, so do nothing
+    } else {
+        require_once WP_FEDORA_DIR . 'wp-fedora/content-management/breadcrumb-editor.php'; // Load the      breadcrumbs module
     }
     
     // MEDIA FOLDER 
