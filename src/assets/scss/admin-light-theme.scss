@@ -13,25 +13,27 @@ p.popular-tags,
 table.widefat {
     box-shadow: 0 10px 10px rgba(100, 100, 100, 0.07);
     border-radius: 5px;
-    border: 0px;
+    border: none;
 }
+
 .widefat thead td,
 .widefat thead th {
-    border-bottom: 0px solid #c3c4c745;
+    border-bottom: 0px solid rgba(195, 196, 199, 0.27);
 }
+
 .widefat tfoot td,
 .widefat tfoot th {
-    border-bottom: 0px solid #c3c4c745;
     border-bottom: none;
 }
-.wp-core-ui .button,
-.wp-core-ui .button-secondary {
-    color: #fff !important;
-    border: none !important;
-    background: #3c344f !important;
-    vertical-align: top !important;
-}
+
 .wp-core-ui {
+    .button,
+    .button-secondary {
+        color: #fff !important;
+        border: none !important;
+        background: #3c344f !important;
+        vertical-align: top !important;
+    }
     .button-primary {
         background-color: #3c344f !important;
         border-color: #3700b3 !important;
@@ -54,9 +56,7 @@ table.widefat {
             color: #333;
             font-family: 'Roboto', sans-serif;
             font-size: 14px;
-            transition:
-                background-color 0.3s ease,
-                box-shadow 0.3s ease;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
             &:hover {
                 background-color: #f9f9f9;
                 box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15);
@@ -67,9 +67,7 @@ table.widefat {
                 right: 12px;
                 color: #333;
                 opacity: 0.6;
-                transition:
-                    opacity 0.3s ease,
-                    color 0.3s ease;
+                transition: opacity 0.3s ease, color 0.3s ease;
                 &:hover {
                     opacity: 1;
                     color: #000;
@@ -111,6 +109,7 @@ table.widefat {
         }
     }
 }
+
 .wp-list-table {
     background-color: #fff !important;
     border-radius: 8px !important;
@@ -129,22 +128,19 @@ table.widefat {
         color: #424242 !important;
         border-bottom: none !important;
     }
-    tr {
-        &:hover {
-            background-color: #f0f0f0 !important;
-            box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1) !important;
-        }
+    tr:hover {
+        background-color: #f0f0f0 !important;
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1) !important;
     }
-    .check-column {
-        input[type='checkbox'] {
-            border: 1px solid #999 !important;
-            background-color: #fafafa !important;
-            border-radius: 3px !important;
-            width: 16px !important;
-            height: 16px !important;
-        }
+    .check-column input[type='checkbox'] {
+        border: 1px solid #999 !important;
+        background-color: #fafafa !important;
+        border-radius: 3px !important;
+        width: 16px !important;
+        height: 16px !important;
     }
 }
+
 .wp-list-table input[type='text'],
 .wp-list-table textarea {
     background-color: #fafafa !important;
@@ -154,28 +150,24 @@ table.widefat {
     color: #333 !important;
     width: 100% !important;
 }
+
 .tablenav .tablenav-pages a,
 .tablenav .tablenav-pages span {
     background-color: #3c344f !important;
     color: white !important;
     border-radius: 4px !important;
-    padding: 5px 10px !important;
-    margin: 0 2px !important;
-}
-.tablenav {
-    .tablenav-pages {
-        a {
-            &:hover {
-                background-color: #3700b3 !important;
-            }
-        }
+    padding: 8px !important;
+    &:hover {
+        background-color: #3700b3 !important;
     }
 }
+
 .alternate,
 .striped > tbody > :nth-child(2n + 1),
 ul.striped > :nth-child(2n + 1) {
     background-color: #f6f7f78f;
 }
+
 #adminmenu,
 #adminmenu .wp-submenu,
 #adminmenuback,
@@ -183,11 +175,13 @@ ul.striped > :nth-child(2n + 1) {
     width: 160px;
     background-color: #313848;
 }
+
 .postbox {
     box-shadow: 0 10px 10px rgba(100, 100, 100, 0.07) !important;
     border-radius: 5px !important;
     border: none !important;
 }
+
 .wp-list-table input[type='text'],
 .wp-list-table textarea,
 .postbox input[type='text'],
@@ -201,6 +195,7 @@ ul.striped > :nth-child(2n + 1) {
     color: #333 !important;
     width: 100% !important;
 }
+
 input[type='text']:focus,
 input[type='password']:focus,
 input[type='email']:focus,
@@ -211,6 +206,7 @@ select:focus,
     border-color: #333 !important;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.2) !important;
 }
+
 #titlediv {
     #title {
         padding: 3px 8px;
@@ -225,12 +221,12 @@ select:focus,
         border: none;
     }
 }
-#post-status-info {
-    td {
-        font-size: 12px;
-        display: none;
-    }
+
+#post-status-info td {
+    font-size: 12px;
+    display: none;
 }
+
 .plugins .active td,
 .plugins .active th {
     background-color: #f2f2f2 !important;
