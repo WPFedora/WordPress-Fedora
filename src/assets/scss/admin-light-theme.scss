@@ -111,11 +111,6 @@ table.widefat {
 }
 
 .wp-list-table {
-    background-color: #fff !important;
-    border-radius: 8px !important;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1) !important;
-    border-collapse: separate !important;
-    overflow: hidden !important;
     th {
         background-color: #f5f5f5 !important;
         color: #333 !important;
@@ -140,6 +135,7 @@ table.widefat {
         height: 16px !important;
     }
 }
+
 
 .wp-list-table input[type='text'],
 .wp-list-table textarea {
