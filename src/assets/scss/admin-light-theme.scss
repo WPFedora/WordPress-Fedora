@@ -147,17 +147,6 @@ table.widefat {
     width: 100% !important;
 }
 
-.tablenav .tablenav-pages a,
-.tablenav .tablenav-pages span {
-    background-color: #3c344f !important;
-    color: white !important;
-    border-radius: 4px !important;
-    padding: 8px !important;
-    &:hover {
-        background-color: #3700b3 !important;
-    }
-}
-
 .alternate,
 .striped > tbody > :nth-child(2n + 1),
 ul.striped > :nth-child(2n + 1) {
