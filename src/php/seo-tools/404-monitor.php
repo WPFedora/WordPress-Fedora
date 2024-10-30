@@ -147,18 +147,4 @@ function wp_fedora_delete_404_table() {
     $wpdb->query("DROP TABLE IF EXISTS $table_name");
 }
 
-
-
-// Callback function to render the checkbox for disabling 404 Monitor
-function wp_fedora_toggle_404_monitor_callback($args) {
-    $option = get_option('disable_404_monitor_log_');  // Get the value of the option
-    echo "<input type='checkbox' id='{$args['label_for']}' name='disable_404_monitor_log_' value='1' " . checked(1, $option, false) . " />";
-}
-
-// Set default option for 404 monitor (enabled by default)
-function wp_fedora_404_monitor_install() {
-    if (get_option('disable_404_monitor_log_') === false) {
-        update_option('disable_404_monitor_log_', 0);  // 404 Monitor enabled by default
-    }
-}
 register_activation_hook(__FILE__, 'wp_fedora_404_monitor_install');
